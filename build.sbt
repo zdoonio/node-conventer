@@ -23,7 +23,7 @@ libraryDependencies ++= Seq(
   "net.fwbrasil" %% "activate-slick" % "1.7",
   "org.postgresql" % "postgresql" % "42.2.5",
   "com.adrianhurt" %% "play-bootstrap3" % "0.4.4-P23",
-  "org.apache.poi" % "poi" % "3.17"
+  "org.apache.poi" % "poi-ooxml"  % "3.15"
 )
 
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
