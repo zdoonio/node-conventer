@@ -9,23 +9,30 @@ import PersistanceContext._
 case class Node(
   nodeId: Int,
   name: String,
-  nodes: LazyList[Node]
+  mainNode: Option[Node]
 ) extends Entity
 
 
 object Node {
 
-  def create(nodeData: NodeData) = {
-    val nodes = nodeData.nodes.map { node =>
-      Node(node.nodeId, nodeData.name, listToLazyList(List()))
+  def create(mainNodeData: NodeData, subNodesData: List[NodeData]) = {
+
+    val node = Node(mainNodeData.nodeId, mainNodeData.name, None)
+
+    subNodesData.map { subNodeData =>
+      Node(subNodeData.nodeId, subNodeData.name, Some(node))
     }
-    Node(nodeData.nodeId, nodeData.name, nodes)
+
   }
 
-  def getNodeList: List[Node] = transactional(all[Node])
+  def getMainNodeList: List[Node] = transactional(select[Node] where(_.mainNode.isNull))
+
+  def getSubNodeList(node: Node): List[Node] = transactional(select[Node] where(_.mainNode.orNull.id :== node.id))
 
   def toNodeData(node: Node): NodeData = {
-    val nodesData = node.nodes.map { node =>
+    val subNodes = getSubNodeList(node)
+
+    val nodesData = subNodes.map { node =>
       NodeData(node.nodeId, node.name, List())
     }
 

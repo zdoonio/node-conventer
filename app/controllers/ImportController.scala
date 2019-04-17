@@ -30,16 +30,14 @@ object ImportController extends Controller {
 
       val groupNodes = nodeData.partition(_.name.length == 1)
 
-      groupNodes._1.foreach { mainNodeData =>
-        groupNodes._2.foreach { subNodeData =>
-          if(mainNodeData.name.charAt(0) == subNodeData.name.charAt(0))
-            mainNodeData.nodes ::: List(subNodeData)
-        }
+      val nodesAndSubNodes = groupNodes._1.map { mainNodeData =>
+        (mainNodeData, groupNodes._2.filter(mainNodeData.name.charAt(0) == _.name.charAt(0)))
+      }
 
+      nodesAndSubNodes.foreach { nodeAndSubNode =>
         transactional {
-          Node.create(mainNodeData)
+          Node.create(nodeAndSubNode._1, nodeAndSubNode._2)
         }
-
       }
 
       Ok

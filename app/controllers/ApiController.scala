@@ -9,7 +9,7 @@ object ApiController extends Controller {
 
   def getAlarmList = Action { implicit request =>
     try {
-        val nodes = Node.getNodeList.map { node =>
+        val nodes = Node.getMainNodeList.map { node =>
           Node.toNodeData(node)
         }
 
