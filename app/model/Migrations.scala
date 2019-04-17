@@ -13,12 +13,12 @@ object SchemaConst {
 }
 
 class CreateSchema extends Migration {
-  override def timestamp: Long = 1555495971L
+  override def timestamp: Long = 1555499027L
 
   def up = {
-    Logger.debug("Recreating all tables")
+    Logger.debug("Migrations: Recreating all tables")
     removeAllEntitiesTables.ifExists
     createTableForAllEntities.ifNotExists
+    Logger.debug("Migrations: Recreating all tables - SCRIPT - finished")
   }
-
 }
