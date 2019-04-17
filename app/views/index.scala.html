@@ -1,7 +1,20 @@
+@import views.html.helper.form
 @(message: String)
 
-@main("Welcome to Play") {
+
+@implicitFC = @{
+    b3.horizontal.fieldConstructor("col-md-4", "col-md-8")
+}
+
+@main("Importer") {
 
     <h1>Node conventer</h1>
+
+    @form(routes.ImportController.importNodes(), 'enctype -> "multipart/form-data", 'class -> "form-horizontal") {
+        <fieldset><input type="file" name="sheet" class="form-control"></fieldset>
+        <div class="actions" style="margin-top: 20px">
+        @b3.submit('class -> "btn btn-primary") { Importuj }
+        </div>
+    }
 
 }
