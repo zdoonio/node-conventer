@@ -9,3 +9,5 @@ GET     /                           controllers.CoreController.index
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 POST    /node/import                controllers.ImportController.importNodes
+
+GET     /node                       controllers.ApiController.getAlarmList

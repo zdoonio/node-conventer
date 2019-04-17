@@ -21,4 +21,14 @@ object Node {
     }
     Node(nodeData.nodeId, nodeData.name, nodes)
   }
+
+  def getNodeList: List[Node] = transactional(all[Node])
+
+  def toNodeData(node: Node): NodeData = {
+    val nodesData = node.nodes.map { node =>
+      NodeData(node.nodeId, node.name, List())
+    }
+
+    NodeData(node.nodeId, node.name, nodesData)
+  }
 }
