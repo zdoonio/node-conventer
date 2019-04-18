@@ -23,7 +23,7 @@ Apache POI 3.15
 
 ## Documentation
 
-Please see <https://www.playframework.com/documentation/2.6.x/Home>.
+Please see <https://www.playframework.com/documentation/2.3.x/Home>.
 
 ## Contact
 dominik.zdunczyk@gmail.com
