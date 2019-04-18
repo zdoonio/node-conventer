@@ -14,12 +14,12 @@ Enjoy
 
 ## Version
 
-Play framework 2.3.10
-ORM net.fwbraisl Activate 1.7 
-Postgresql 10.6
-Scala 2.11
-Java 1.8
-Apache POI 3.15
+- Play framework 2.3.10
+- ORM net.fwbraisl Activate 1.7 
+- Postgresql 10.6
+- Scala 2.11
+- Java 1.8
+- Apache POI 3.15
 
 ## Documentation
 
