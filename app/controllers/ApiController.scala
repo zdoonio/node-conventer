@@ -7,7 +7,7 @@ import play.api.mvc._
 
 object ApiController extends Controller {
 
-  def getAlarmList = Action { implicit request =>
+  def getNodeList = Action { implicit request =>
     try {
         val nodes = Node.getMainNodeList.map { node =>
           Node.toNodeData(node)
