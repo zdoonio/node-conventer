@@ -28,8 +28,12 @@ object Node {
     else
       savedNode.head
 
-    subNodesData.map { subNodeData =>
-      Node(subNodeData.nodeId, subNodeData.name, Some(node))
+    subNodesData.foreach { subNodeData =>
+      val savedSubNode = select[Node] where (subNodeData.nodeId :== _.nodeId)
+
+      if(savedNode.isEmpty)
+        Node(subNodeData.nodeId, subNodeData.name, Some(node))
+      else savedSubNode.head
     }
 
   }
