@@ -31,7 +31,7 @@ object Node {
     subNodesData.foreach { subNodeData =>
       val savedSubNode = select[Node] where (subNodeData.nodeId :== _.nodeId)
 
-      if(savedNode.isEmpty && !savedSubNode.headOption.toList.contains(node))
+      if(savedSubNode.isEmpty && !savedSubNode.headOption.toList.contains(node))
         Node(subNodeData.nodeId, subNodeData.name, Some(node))
     }
 
