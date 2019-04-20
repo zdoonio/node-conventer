@@ -19,7 +19,7 @@ class ApiControllerSpec extends FlatSpec with ActivateTest with Matchers {
       val node = route(FakeRequest(GET, "/node")).get
 
       status(node) should equal(OK)
-      contentAsJson(node) should equal (Json.parse("""{ "nodes":[{"nodeId":1,"name":"test1","nodes":[{"nodeId":2,"name":"test2","nodes":[]},{"nodeId":3,"name":"test3","nodes":[]}]}]}"""))
+      contentAsJson(node) should equal (Json.parse("""{ "nodes":[{"nodeId":1,"name":"test1","nodes":[{"nodeId":3,"name":"test3","nodes":[]},{"nodeId":2,"name":"test2","nodes":[]}]}]}"""))
     }
 }
 
